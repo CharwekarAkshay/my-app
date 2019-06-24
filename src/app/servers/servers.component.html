@@ -1,0 +1,32 @@
+<div class="container">
+  <!-- $event is the important variable name we can always pass. It holds the data and we can capture the evnet data    -->
+  <!-- <input type="text" class="form-control" (input) = "onUpdateServerName($event)" /> -->
+
+  <!-- Two way data binding -->
+  <input type="text" class="form-control" [(ngModel)] = "serverName">
+  <!-- <p>{{ serverName }}</p> -->
+   
+  <button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "onCreateServer()"> Add Server </button>
+  
+  <!-- String Interpolation -->
+  <!-- <p>{{ allowNewServer }}</p> -->
+  
+  <!-- Property Binding -->
+  <!-- <p [innerText] = "allowNewServer" ></p> -->
+
+  <!-- <p>{{ serverCreationStatus }}</p> -->
+
+  <p *ngIf="serverCreated; else noServer">Server was created and the Serve Name is {{serverName}}</p>
+  <!-- 
+    If we want to add the else part in the code 
+    ng-template is used to mark places in DOM
+    #noServer is the local reference
+    We will show this block conditionally 
+  -->
+  <ng-template #noServer> 
+    <p>No server was created</p> 
+  </ng-template> 
+
+  <app-server></app-server>
+  <app-server></app-server>
+</div>
